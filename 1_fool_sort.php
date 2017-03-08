@@ -1,8 +1,8 @@
 <?php
 
 $massive = [5,2,1,3,9,0,4,6,8,7];
-$index = 0;
-while ($index <= (count($massive)) - 2) {
+$massiveSize = count($massive);
+for ($index = 0; $index < $massiveSize - 1;) {
     if ($massive[$index] < $massive[$index + 1]) {
         ++$index;
     }
