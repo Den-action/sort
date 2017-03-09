@@ -7,9 +7,7 @@ for ($index = 0; $index < $massiveSize - 1;) {
         ++$index;
     }
     else {
-        $temp = $massive[$index];
-        $massive[$index] = $massive[$index + 1];
-        $massive[$index + 1] = $temp;
+        list($massive[$index],$massive[$index+1]) = array($massive[$index+1],$massive[$index]);
         $index = 0;
     }
 }

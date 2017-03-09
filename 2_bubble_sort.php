@@ -1,19 +1,16 @@
 <?php
 
 $massive = [5,2,1,3,9,0,4,6,8,7];
-$number = count($massive);
-$flag = false;
-while (--$number > 1) {
+$number = count($massive) - 1;
+$flag = true;
+while ($flag) {
+    $flag = false;
     for ($index = 0; $index < $number; $index++) {
         if ($massive[$index] > $massive[$index + 1]) {
-            $temp = $massive[$index];
-            $massive[$index] = $massive[$index + 1];
-            $massive[$index + 1] = $temp;
+            list($massive[$index],$massive[$index+1]) = array($massive[$index+1],$massive[$index]);
             $flag = true;
         }
     }
-    if (!$flag)
-        break;
 }
 var_dump($massive);
 
