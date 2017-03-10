@@ -1,25 +1,27 @@
 <?php
 
 $massive = [5,2,1,3,9,0,4,6,8,7];
-
-for ($minIndex = 0, $maxIndex = count($massive) - 1; $minIndex < $maxIndex;) {
-    for ($index = $minIndex; $index < $maxIndex; $index++) {
+$maxIndex = count($massive) - 1;
+$direction = true;
+$flag = true;
+while ($flag) {
+    $flag = false;
+    for ($index = $direction ? $minIndex : $maxIndex - 1; ; $index = $direction ? ++$index : --$index) {
         if ($massive[$index] > $massive[$index + 1]) {
-            $temp = $massive[$index];
-            $massive[$index] = $massive[$index + 1];
-            $massive[$index + 1] = $temp;
+            list($massive[$index], $massive[$index + 1]) = array($massive[$index + 1], $massive[$index]);
+            $flag = true;
         }
+        if ($direction && $index == $maxIndex -1)
+            break;
+        elseif (!$direction && $index == $minIndex)
+            break;
     }
-    $maxIndex--;
-    for ($index = $maxIndex; $index >= $minIndex; $index--) {
-        if ($massive[$index - 1] > $massive[$index]) {
-            $temp = $massive[$index - 1];
-            $massive[$index - 1] = $massive[$index];
-            $massive[$index] = $temp;
-        }
-    }
-    $minIndex++;
+    $minIndex = $direction ? $minIndex : ++$minIndex;
+    $maxIndex = $direction ? --$maxIndex : $maxIndex;
+    $direction = !$direction;
 }
+
 var_dump($massive);
 
 ?>
+
