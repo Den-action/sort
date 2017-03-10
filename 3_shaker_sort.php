@@ -7,12 +7,7 @@ $flag = true;
 $minIndex = 0;
 while ($flag) {
     $flag = false;
-    if ($direction) {
-        $index = $minIndex;
-    }
-    else {
-        $index = $maxIndex - 1;
-    }
+    $index = $direction ? $minIndex : $maxIndex - 1;
     while (true) {
         if ($massive[$index] > $massive[$index + 1]) {
             list($massive[$index], $massive[$index + 1]) = array($massive[$index + 1], $massive[$index]);
@@ -20,10 +15,7 @@ while ($flag) {
         }
         if (($direction && $index == $maxIndex -1) || (!$direction && $index == $minIndex) )
             break;
-        if ($direction)
-            ++$index;
-        else
-            --$index;
+        $index = $direction ? ++$index : --$index;
     }
     $direction = !$direction;
 }
