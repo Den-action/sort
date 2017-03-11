@@ -1,26 +1,26 @@
 <?php
 
 $massive = [5,2,1,3,9,0,4,6,8,7];
-while (true) {
-    $numberOfSwaps = 0;
-    for ($index = 0; $index < count($massive) - 1; $index += 2) {
+$flag = true;
+$evenFlag = true;
+$oddFlag = true;
+$maxIndex = count($massive) - 1;
+while ($evenFlag || $oddFlag) {
+    $swapFlag = false;
+    if ($flag) {
+        $evenFlag = $oddFlag = false;
+    }
+    for ($index = $flag ? 0 : 1; $index < $maxIndex; $index += 2) {
         if ($massive[$index] > $massive[$index + 1]) {
-            $temp = $massive[$index];
-            $massive[$index] = $massive[$index + 1];
-            $massive[$index + 1] = $temp;
-            $numberOfSwaps++;
+            list($massive[$index], $massive[$index + 1]) = array($massive[$index + 1], $massive[$index]);
+            $swapFlag = true;
         }
     }
-    for ($index = 1; $index < count($massive) - 1; $index += 2) {
-        if ($massive[$index] > $massive[$index + 1]) {
-            $temp = $massive[$index];
-            $massive[$index] = $massive[$index + 1];
-            $massive[$index + 1] = $temp;
-            $numberOfSwaps++;
+        if ($swapFlag) {
+            $evenFlag = $flag ? true : $evenFlag;
+            $oddFlag = $flag ? $oddFlag : true;
         }
-    }
-    if (0 == $numberOfSwaps)
-        break;
+    $flag = !$flag;
 }
 var_dump($massive);
 
