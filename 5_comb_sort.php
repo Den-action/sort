@@ -3,7 +3,6 @@
 $massive = [5,2,1,3,9,0,4,6,8,7];
 $number = count($massive);
 $interval = $number - 1;
-$flag = true;
 while ($interval > 0) {
     $swapFlag = false;
     for ($index = 0; $index + $interval < $number; $index++) {
@@ -12,12 +11,11 @@ while ($interval > 0) {
             $swapFlag = true;
         }
     }
-    if (!$swapFlag && !$flag)
+    if (!$swapFlag && $interval == 1)
         break;
     $interval = (int)($interval / 1.247);
-    if ($interval < 1 && $flag) {
+    if ($interval < 1) {
         $interval = 1;
-        $flag = false;
     }
 }
 var_dump($massive);
