@@ -2,7 +2,7 @@
 
 $massive = [5,2,1,3,9,0,4,6,8,7];
 $number = count($massive);
-$interval = (int)($number / 1.247);
+$interval = $number - 1;
 $flag = true;
 while ($interval > 0) {
     $swapFlag = false;
