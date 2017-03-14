@@ -11,9 +11,9 @@ while ($interval > 0) {
             list($massive[$index], $massive[$index + $interval]) = array($massive[$index + $interval], $massive[$index]);
             $swapFlag = true;
         }
-        if (!$swapFlag && !$flag)
-            break 2;
     }
+    if (!$swapFlag && !$flag)
+        break;
     $interval = (int)($interval / 1.247);
     if ($interval < 1 && $flag) {
         $interval = 1;
